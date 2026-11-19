@@ -35,6 +35,11 @@ export function applyShot(W, params) {
     W.starterCar.speed = 26;
     W.camera.position.set(-12, 8, 24);
     W.camera.lookAt(0, 2, 58);
+    // pull the pursuing cops into frame behind the car
+    W.cops.forEach((cop, i) => {
+      cop.group.position.set([-9, 7, -4, 11][i] || 0, 0, 42 - i * 3);
+      cop.heading = 0; cop.group.rotation.y = 0; cop.speed = 24;
+    });
     W.setObjective('Lose the cops — 3 stars, Port Meridian PD on your tail');
     W.setMissionLabel('MISSION 5 · THE GETAWAY');
   } else if (shot === 'mission') {
