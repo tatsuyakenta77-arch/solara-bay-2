@@ -42,8 +42,8 @@ export const MISSIONS = [
     id: 2, name: 'The Pickup', pay: 600,
     brief: 'A package is waiting at the docks. Drive there, get out and collect it on foot.',
     steps: [
-      { type: 'goto', x: -40, z: 232, r: 12, text: 'Drive to the docks (south marina)' },
-      { type: 'collect', x: -40, z: 250, r: 4, text: 'Get out and collect the package (walk into the marker)' },
+      { type: 'goto', x: 40, z: 232, r: 12, text: 'Drive to the docks (south marina)' },
+      { type: 'collect', x: 40, z: 250, r: 4, text: 'Get out and collect the package (walk into the marker)' },
     ],
   },
   {
@@ -58,8 +58,8 @@ export const MISSIONS = [
     id: 4, name: 'Dockside Trouble', pay: 1200,
     brief: 'Rival crew The Gulls jumped Mara\'s people at the docks. Go there and deal with them.',
     steps: [
-      { type: 'goto', x: -40, z: 232, r: 12, text: 'Drive to the docks' },
-      { type: 'fight', x: -40, z: 232, r: 26, count: 3, text: 'Take out the rival crew (click to shoot, F to punch)' },
+      { type: 'goto', x: 40, z: 232, r: 12, text: 'Drive to the docks' },
+      { type: 'fight', x: 40, z: 232, r: 26, count: 3, text: 'Take out the rival crew (click to shoot, F to punch)' },
     ],
   },
   {

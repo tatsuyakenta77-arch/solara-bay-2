@@ -144,16 +144,16 @@ export function buildWorld(scene, W) {
     }
   }
 
-  // Marina: pier + boats at the south edge
+  // Marina: pier + boats at the south edge (open promenade, bx >= 0 row)
   const pier = new THREE.Mesh(new THREE.BoxGeometry(60, 0.8, 8),
     new THREE.MeshLambertMaterial({ color: 0x6b4a2a }));
-  pier.position.set(-40, 0.4, 262); scene.add(pier);
+  pier.position.set(40, 0.4, 262); scene.add(pier);
   for (let i = 0; i < 4; i++) {
     const hull = new THREE.Mesh(new THREE.BoxGeometry(8, 1.6, 3),
       new THREE.MeshLambertMaterial({ color: [0xffffff, 0xff5533, 0x33aaff, 0xffcc33][i] }));
-    hull.position.set(-62 + i * 16, 0.8, 276); scene.add(hull);
+    hull.position.set(18 + i * 16, 0.8, 276); scene.add(hull);
     const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 6, 6), poleMat);
-    mast.position.set(-62 + i * 16, 4, 276); scene.add(mast);
+    mast.position.set(18 + i * 16, 4, 276); scene.add(mast);
   }
 
   // Landmark towers so the skyline reads at a glance
