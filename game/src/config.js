@@ -42,8 +42,8 @@ export const MISSIONS = [
     id: 2, name: 'The Pickup', pay: 600,
     brief: 'A package is waiting at the docks. Drive there, get out and collect it on foot.',
     steps: [
-      { type: 'goto', x: -150, z: 150, r: 12, text: 'Drive to the docks (south-west)' },
-      { type: 'collect', x: -168, z: 168, r: 4, text: 'Get out and collect the package (walk into the marker)' },
+      { type: 'goto', x: -40, z: 232, r: 12, text: 'Drive to the docks (south marina)' },
+      { type: 'collect', x: -40, z: 255, r: 4, text: 'Get out and collect the package (walk into the marker)' },
     ],
   },
   {
@@ -58,15 +58,15 @@ export const MISSIONS = [
     id: 4, name: 'Dockside Trouble', pay: 1200,
     brief: 'Rival crew The Gulls jumped Mara\'s people at the docks. Go there and deal with them.',
     steps: [
-      { type: 'goto', x: -150, z: 150, r: 12, text: 'Drive to the docks' },
-      { type: 'fight', x: -150, z: 150, r: 26, count: 3, text: 'Take out the rival crew (click to shoot, F to punch)' },
+      { type: 'goto', x: -40, z: 232, r: 12, text: 'Drive to the docks' },
+      { type: 'fight', x: -40, z: 232, r: 26, count: 3, text: 'Take out the rival crew (click to shoot, F to punch)' },
     ],
   },
   {
     id: 5, name: 'The Getaway', pay: 1500,
     brief: 'The job went loud. Grab the cash from the bank steps and get to the hideout before the cops box you in.',
     steps: [
-      { type: 'collect', x: 80, z: -80, r: 4, text: 'Grab the cash bag at the bank steps' },
+      { type: 'collect', x: 116, z: -58, r: 4, text: 'Grab the cash bag at the bank steps' },
       { type: 'deliver', x: 150, z: 120, r: 10, text: 'Reach the hideout — wanted level 3, don\'t get busted' },
     ],
   },

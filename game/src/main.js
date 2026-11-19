@@ -59,8 +59,8 @@ function boot() {
   W.player.pos.set(0, 0, 20);
   W.player.group.position.copy(W.player.pos);
 
-  // starter car by the garage + parked cars around the city
-  W.starterCar = makeCar(0xcc2222, { x: 6, z: 26, heading: Math.PI / 2, parked: true });
+  // starter car by the garage + parked cars around the city (all parked ON streets)
+  W.starterCar = makeCar(0xcc2222, { x: 6, z: 3, heading: Math.PI / 2, parked: true });
   scene.add(W.starterCar.group);
   W.parkedCars.push(W.starterCar);
   const spots = [
@@ -132,6 +132,9 @@ function boot() {
   }
   loop();
   window.__game = W; // exposed for playtesting / debugging
+  window.__step = (n, dt) => { for (let i = 0; i < (n || 1); i++) tick(dt || 1 / 60); };
+  window.__shoot = () => shoot(W);
+  window.__punch = () => punch(W);
   window.__ready = true;
 }
 
@@ -170,10 +173,11 @@ function tryInteract() {
     if (d < bd) { bd = d; best = car; }
   }
   if (best) {
+    const wasParked = best.parked; // enterCar clears parked — capture first
     enterCar(W, best);
     W.parkedCars = W.parkedCars.filter((c) => c !== best);
     W.traffic = W.traffic.filter((c) => c !== best); // carjacked out of traffic
-    if (best.parked || best === W.targetCoupe) {
+    if (wasParked || best === W.targetCoupe) {
       // stealing a parked car is a crime
       W.addWanted(1, 'car stolen — witnesses called the cops');
       sfx.horn();

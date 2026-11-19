@@ -49,22 +49,29 @@ export function buildWorld(scene, W) {
     new THREE.MeshLambertMaterial({ color: CFG.colors.sand }));
   sand.rotation.x = -Math.PI / 2; sand.position.set(0, 0.0, 242); scene.add(sand);
 
-  // Roads: dark strips along every street line, plus sidewalk frames
-  const roadMat = new THREE.MeshLambertMaterial({ color: CFG.colors.road });
-  const walkMat = new THREE.MeshLambertMaterial({ color: CFG.colors.sidewalk });
-  const dashMat = new THREE.MeshBasicMaterial({ color: 0xd8d8c0 });
+  // Roads: dark strips along every street line, with a dashed centre line
+  // baked into one repeating canvas texture per direction (cheap: no per-dash meshes)
+  function roadTexture(vertical) {
+    const c = document.createElement('canvas');
+    c.width = vertical ? 32 : 128; c.height = vertical ? 128 : 32;
+    const g = c.getContext('2d');
+    g.fillStyle = '#2c2f36'; g.fillRect(0, 0, c.width, c.height);
+    g.fillStyle = '#d8d8c0';
+    if (vertical) g.fillRect(14, 48, 4, 32); else g.fillRect(48, 14, 32, 4);
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = THREE.RepeatWrapping; t.wrapT = THREE.RepeatWrapping;
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }
+  const roadMatH = new THREE.MeshLambertMaterial({ map: roadTexture(false) });
+  roadMatH.map.repeat.set(16, 1);
+  const roadMatV = new THREE.MeshLambertMaterial({ map: roadTexture(true) });
+  roadMatV.map.repeat.set(1, 16);
   for (const s of W.streets) {
-    const r1 = new THREE.Mesh(new THREE.PlaneGeometry(520, CFG.road), roadMat);
+    const r1 = new THREE.Mesh(new THREE.PlaneGeometry(520, CFG.road), roadMatH);
     r1.rotation.x = -Math.PI / 2; r1.position.set(0, 0.01, s); scene.add(r1);
-    const r2 = new THREE.Mesh(new THREE.PlaneGeometry(CFG.road, 520), roadMat);
+    const r2 = new THREE.Mesh(new THREE.PlaneGeometry(CFG.road, 520), roadMatV);
     r2.rotation.x = -Math.PI / 2; r2.position.set(s, 0.01, 0); scene.add(r2);
-    // dashed centre lines
-    for (let d = -240; d <= 240; d += 16) {
-      const a = new THREE.Mesh(new THREE.PlaneGeometry(4, 0.5), dashMat);
-      a.rotation.x = -Math.PI / 2; a.position.set(d, 0.03, s); scene.add(a);
-      const b = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 4), dashMat);
-      b.rotation.x = -Math.PI / 2; b.position.set(s, 0.03, d); scene.add(b);
-    }
   }
 
   // Buildings: 1-3 towers per block, varied heights and facades
@@ -122,7 +129,7 @@ export function buildWorld(scene, W) {
   const trunkMat = new THREE.MeshLambertMaterial({ color: 0x5a3d24 });
   const leafMat = new THREE.MeshLambertMaterial({ color: 0x2e7d32 });
   for (const s of W.streets) {
-    for (let d = -220; d <= 220; d += 58) {
+    for (let d = -220; d <= 220; d += 116) {
       if (Math.abs(d - s) < 20) continue;
       const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 5, 6), poleMat);
       pole.position.set(d, 2.5, s + CFG.road / 2 + 1.2); scene.add(pole);

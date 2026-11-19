@@ -40,14 +40,14 @@ export function applyShot(W, params) {
   } else if (shot === 'mission') {
     W.setWanted(0);
     // on foot at the docks with the objective marker visible
-    P.pos.set(-138, 0, 138); P.group.position.copy(P.pos);
-    P.heading = Math.PI * 0.75; P.group.rotation.y = P.heading;
-    W.camera.position.set(-158, 7, 118);
-    W.camera.lookAt(-150, 2, 150);
+    P.pos.set(-28, 0, 218); P.group.position.copy(P.pos);
+    P.heading = Math.PI * 0.85; P.group.rotation.y = P.heading;
+    W.camera.position.set(-62, 8, 200);
+    W.camera.lookAt(-40, 2, 232);
     W.setObjective('Mission 4: Dockside Trouble — Take out the rival crew (click to shoot, F to punch)');
     W.setMissionLabel('MISSION 4 · DOCKSIDE TROUBLE');
-    W.spawnEnemies(-150, 150, 3);
-    W.setMissionMarker(-150, 150);
+    W.spawnEnemies(-40, 232, 3);
+    W.setMissionMarker(-40, 232);
   } else { // street
     W.setWanted(0);
     P.pos.set(10, 0, 58); P.group.position.copy(P.pos);
