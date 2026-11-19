@@ -57,12 +57,14 @@ export function updateHUD(W) {
   const P = W.player;
   setSpeed(W, P.car ? P.car.speed : P.speed);
   els.crosshair.style.display = (!P.car && W.started) ? 'block' : 'none';
-  // mission label
-  if (W.missionState === 'active') {
-    const m = W.missions ? W.missions[Math.min(W.missionIndex, W.missions.length - 1)] : null;
-    els.mission.textContent = m ? `MISSION ${m.id} · ${m.name}` : '';
-  } else if (W.missionState === 'done') els.mission.textContent = 'FREE ROAM';
-  else els.mission.textContent = '';
+  // mission label (staging mode sets its own label — don't overwrite it)
+  if (!W.shotMode) {
+    if (W.missionState === 'active') {
+      const m = W.missions ? W.missions[Math.min(W.missionIndex, W.missions.length - 1)] : null;
+      els.mission.textContent = m ? `MISSION ${m.id} · ${m.name}` : '';
+    } else if (W.missionState === 'done') els.mission.textContent = 'FREE ROAM';
+    else els.mission.textContent = '';
+  }
   drawMinimap(W);
 }
 

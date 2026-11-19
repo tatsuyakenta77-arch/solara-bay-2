@@ -19,9 +19,9 @@ export function applyShot(W, params) {
     W.starterCar.group.position.set(0, 0, 116);
     W.starterCar.heading = Math.PI; // facing north up the avenue
     W.starterCar.group.rotation.y = Math.PI;
-    W.starterCar.speed = 14;
-    W.camera.position.set(-14, 9, 150);
-    W.camera.lookAt(0, 4, 60);
+    W.starterCar.speed = 8;
+    W.camera.position.set(2, 9, 148);
+    W.camera.lookAt(0, 3, 60);
     W.setObjective('Mission 1: First Gear — Drive to the meet point at the north-east corner');
     W.setMissionLabel('MISSION 1 · FIRST GEAR');
   } else if (shot === 'chase') {
