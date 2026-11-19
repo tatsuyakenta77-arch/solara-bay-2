@@ -43,7 +43,7 @@ export const MISSIONS = [
     brief: 'A package is waiting at the docks. Drive there, get out and collect it on foot.',
     steps: [
       { type: 'goto', x: -40, z: 232, r: 12, text: 'Drive to the docks (south marina)' },
-      { type: 'collect', x: -40, z: 255, r: 4, text: 'Get out and collect the package (walk into the marker)' },
+      { type: 'collect', x: -40, z: 250, r: 4, text: 'Get out and collect the package (walk into the marker)' },
     ],
   },
   {

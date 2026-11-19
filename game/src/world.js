@@ -186,5 +186,5 @@ export function collideBuildings(W, pos, r) {
 export function clampCity(pos, margin) {
   const m = margin || 0;
   pos.x = Math.max(-235 + m, Math.min(235 - m, pos.x));
-  pos.z = Math.max(-235 + m, Math.min(238 - m, pos.z));
+  pos.z = Math.max(-235 + m, Math.min(258 - m, pos.z)); // south edge reaches the marina pier
 }
