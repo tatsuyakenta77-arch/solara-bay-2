@@ -1,6 +1,10 @@
+[![make.fun · gta6-01](https://make.fun/badge/gta6-01.svg)](https://make.fun/bounty/gta6-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+[![rank](https://make.fun/badge/gta6-01/tatsuyakenta77-arch/solara-bay-2/rank.svg)](https://make.fun/bounty/gta6-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+[![reward](https://make.fun/badge/gta6-01/tatsuyakenta77-arch/solara-bay-2/reward.svg)](https://make.fun/bounty/gta6-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+
 # Meridian Heat
 
-An original open-world crime game set in **Port Meridian** — a neon harbour city of grid streets, a marina, a central plaza and a skyline you can drive through. Built for the make.fun **gta6-01** competition ("Make GTA 6").
+An original open-world crime game set in **Port Meridian** — a neon harbour city of grid streets, a marina, a central plaza and a skyline you can drive through. Built for the [make.fun **gta6-01** competition](https://make.fun/bounty/gta6-01) ("Make GTA 6").
 
 You are **Jace Marlowe**, a driver pulled back for one last run by fixer **Mara Quinn**. Steal cars, outrun the Port Meridian PD, settle scores at the docks, and finish all six story missions to own the city.
 
